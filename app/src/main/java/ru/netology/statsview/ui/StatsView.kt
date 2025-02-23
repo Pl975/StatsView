@@ -36,10 +36,10 @@ class StatsView @JvmOverloads constructor(
             lineWidth = getDimension(R.styleable.StatsView_lineWidth, lineWidth.toFloat()).toInt()
 
             colors = listOf(
-            getColor(R.styleable.StatsView_color1, generateRandomColor()),
-            getColor(R.styleable.StatsView_color2, generateRandomColor()),
-            getColor(R.styleable.StatsView_color3, generateRandomColor()),
-            getColor(R.styleable.StatsView_color4, generateRandomColor()),
+                getColor(R.styleable.StatsView_color1, generateRandomColor()),
+                getColor(R.styleable.StatsView_color2, generateRandomColor()),
+                getColor(R.styleable.StatsView_color3, generateRandomColor()),
+                getColor(R.styleable.StatsView_color4, generateRandomColor()),
             )
         }
     }
@@ -90,14 +90,17 @@ class StatsView @JvmOverloads constructor(
         }
         var startAngle = -90F
         data.forEachIndexed { index, datum ->
-            val angle = datum * 360F
+            val angle = (datum / data.sum()) * 360F
             paint.color = colors.getOrElse(index) { generateRandomColor() }
             canvas.drawArc(oval, startAngle, angle, false, paint)
             startAngle += angle
         }
 
+        paint.color = colors[0]
+        canvas.drawPoint(center.x, center.y - radius, paint)
+
         canvas.drawText(
-            "%.2f%%".format(data.sum() * 100),
+            "%.2f%%".format(100.00),
             center.x,
             center.y + textPaint.textSize / 4,
             textPaint
