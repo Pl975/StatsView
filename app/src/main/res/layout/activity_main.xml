@@ -18,15 +18,12 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
-        app:color1="#7d2699"
-        app:color2="#994426"
-        app:color3="#429926"
-        app:color4="#FF8C00"
+        app:colors="@array/colors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lineWidth="16dp"
-        app:textSize="40sp" />
+        app:fontSize="40dp" />
 
 </FrameLayout>
